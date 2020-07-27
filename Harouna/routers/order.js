@@ -15,7 +15,7 @@ router.get("/:id", async (req, res) => {
     let id = req.params.id;
     let orders = await Order.findAll({
         where: {
-            [Op.or]: [{ id: id }, { user_id: id }],
+            [Op.or]: [{ id: id }, { userId: id }],
           }
     });
     res.send(orders);
@@ -23,8 +23,8 @@ router.get("/:id", async (req, res) => {
 
 // Post a new order
 router.post("/", async(req, res)=>{
-    let { user_id, name,quantity, price }=req.body;
-    await Order.create({user_id, name,quantity, price })
+    let { userId, name,quantity, price }=req.body;
+    await Order.create({userId, name,quantity, price })
         .then((order)=>{
             res.status(200).send({
                 status:200,
@@ -50,9 +50,9 @@ router.put("/update/:id", async (req, res) => {
     let { name,quantity, price }=req.body;
     let response = await Order.update(
         { 
-            name,
-            quantity,
-            price
+            name : name,
+            quantity: quantity,
+            price: price
         },
         {
             where: {
