@@ -27,6 +27,41 @@ router.post('/', (req, res) =>{
             Error:err,
         })
     })
-})
+});
+
+//Delete method for deleting user by id
+router.delete("/delete/:id", async (req, res) => {
+    let Id = req.params.id;
+  
+    let response = await User.destroy({
+      where: {
+        id: Id
+      },
+    })
+      .then((response) => response)
+      .catch((err) => {
+        return res.send(err);
+      });
+  
+    if (response == 1) {
+      res.send({
+        status: 200,
+        success: true,
+        deleted: {
+          response,
+        },
+      });
+    } else if (response == 0) {
+      res.send({
+        status: 501,
+        success: false,
+        deleted: {
+          row: "none",
+        },
+      });
+    }
+  });
+
+
 
 module.exports = router;

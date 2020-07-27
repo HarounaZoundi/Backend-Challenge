@@ -13,7 +13,7 @@ Order.init(
       primaryKey: true,
       allowNull: false,
     },
-    user_id: {
+    userId: {
         type: Sequelize.UUID,
         allowNull: false,
       },
@@ -32,7 +32,7 @@ Order.init(
   },
   {
     sequelize,
-    modelName: "Order",
+    modelName: "order",
   }
 );
 
