@@ -1,4 +1,18 @@
 
+#### Create new database 
+
+    installing <b>postgres</b>  is required
+## Terminal commands for postgres:
+    createuser -P -s -e your_userNane
+    createdb -h localhost -U your_userNane your_database_name
+
+### Instructions for running  the backend
+    cp .env.example .env  
+    cd harouna
+    npm install
+    npm run dev
+
+
 ### Tables
 ____
 
